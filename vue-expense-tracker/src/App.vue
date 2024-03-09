@@ -4,7 +4,7 @@
     <Balance :total="total"></Balance>
     <IncomeExpense :income="+income" :expenses="+expenses"></IncomeExpense>
     <TransitionList :transactions="transactions"></TransitionList>
-    <AddTransaction></AddTransaction>
+    <AddTransaction @transactionSubmitted="handleTrasnactionSubmitted"></AddTransaction>
   </div>
 </template>
 
@@ -38,6 +38,7 @@ const income=computed(()=>{
   }, 0)
   .toFixed(2);
 });
+//get expense
 const expenses=computed(()=>{
   return transactions.value
   .filter((transaction)=>transaction.amount<0)
@@ -46,7 +47,21 @@ const expenses=computed(()=>{
   }, 0)
   .toFixed(2);
 });
-//get expense
+
+//Add transaction
+const handleTrasnactionSubmitted = (transactionData)=>{
+ // console.log(transactionData);
+ transactions.value.push({
+  id:generateUniqueId(),
+  text:transactionData.text,
+  amoutn:transactionData.amount
+ });
+ //console.log(generateUniqueId());
+};
+//generate Unique id
+const generateUniqueId=()=>{
+  return Math.floor(Math.random()*1000000);
+}
   </script>
 
 <!-- <script>
