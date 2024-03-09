@@ -6,7 +6,7 @@
             <input type="text" id="text" placeholder="Enter text...">
         </div>
         <div class="form-control">
-            <lablel for="amount">Amount<br/>(Negative - expense, postitve -income)</lablel>
+            <label for="amount">Amount<br/>(Negative - expense, postitve -income)</label>
             <input type="number" id="amount" placeholder="Enter amount...">
         </div>
         <button class="btn">Add transaction</button>
